@@ -1,4 +1,14 @@
-const computerPlay = () => {
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'Paper' || userInput === 'scissors') {
+    return userInput;
+  } else {
+    console.log('Error!Please enter rock, paper or scissors!')
+  }
+}
+// console.log(getUserChoice('rock'));
+
+const getComputerChoice = computerPlay = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   switch (randomNumber) {
     case 0:
@@ -12,16 +22,7 @@ const computerPlay = () => {
       break;
   }
 };
-
-const userPlay = userInput => {
-  userInput = userInput.toLowerCase();
-  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-    console.log (userInput);
-  } else {
-    console.log('Error, please type "rock", "paper" or "scissors" ')
-  }
-};
-
+// console.log(getComputerChoice());
 function determineWinner(userChoice, computerChoice) {
   switch (userChoice) {
     case "rock":
@@ -57,19 +58,21 @@ function determineWinner(userChoice, computerChoice) {
   }
 }
 
+// console.log(determineWinner('rock', 'paper'));
+
 function game() {
   let scores = [5];
   let computerScore = 0;
   let userScore = 0;
-  let userPlay;
+  let userChoice;
   let computerChoice;
-
+  
   for (let index = 0; index < 5; index++) {
-
-    userPlay = prompt(`Round(${index + 1}) Choose rock, paper or scissors!`);
+    userChoice = prompt(`Round(${index + 1}) Choose rock, paper or scissors!`);
     computerChoice = computerPlay();
-    scores[index] = determineWinner(userPlay, computerChoice)
-  }
+    scores[index] = determineWinner(userChoice, computerChoice)
+  };
+
   for (let index = 0; index < scores.length; index++) {
     if (scores[index] == 2) {
       computerScore++;
@@ -79,18 +82,16 @@ function game() {
     }
   }
   if (computerScore > userScore) {
-    console.log ("Sorry!The computer won!");
+    return "Sorry!The computer won!";
   }
   else if (userScore > computerScore) {
-    console.log ("Great!You won!");
+    return "Great!You won!";
   }
   else {
-    console.log ("It is a tie!");
+    return "It is a tie!";
   }
 }
 
 console.log(game());
-
-
 
 

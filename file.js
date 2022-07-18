@@ -65,7 +65,7 @@ function game() {
   let computerChoice;
 
   for (let index = 0; index < 5; index++) {
-    userChoice = window.prompt(`Round(${index + 1}) Choose rock, paper or scissors:`);
+    userChoice = prompt(`Round(${index + 1}) Choose rock, paper or scissors:`);
     computerChoice = computerPlay();
     scores[index] = determineWinner(userChoice, computerChoice)
   }

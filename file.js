@@ -5,9 +5,9 @@ const computerPlay = () => {
       return 'rock'
       break;
     case 1:
-      return 'paper'
-    case 2:
       return 'scissors'
+    case 2:
+      return 'paper'
     default:
       break;
   }

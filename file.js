@@ -22,38 +22,45 @@ const userPlay = userInput => {
   }
 };
 
-const determineWinner = (userChoice, computerChoice) => {
-  if (userChoice === computerChoice) {
-    return 'This game is a tie!'
-  }
-  if (userChoice === 'rock') {
-    if (computerChoice === 'paper') {
-      return 'Sorry! computer won!';
-    } else {
-      return 'Congratulations! You won!';
+function determineWinner (userChoice, computerChoice) {
+  switch(userChoice) {
+      case "rock":
+          if (computerChoice == "paper"){
+              return 2;
+          }
+          else if (computerChoice == "scissors"){
+              return 1;
+          }
+          else {
+              return 0;
+          }
+      case "paper":
+          if (computerChoice == "scissors"){
+              return 2;
+          }
+          else if (computerChoice == "rock"){
+              return 1;
+          }
+          else {
+              return 0;
+          }
+      case "scissors":
+          if (computerChoice == "rock"){
+              return 2;
+          }
+          else if (computerChoice == "paper"){
+              return 1;
+          }
+          else {
+              return 0;
+          }
     }
-  }
-  if (userChoice === 'paper') {
-    if (computerChoice === 'scissors') {
-      return 'Sorry! computer won!';
-    } else {
-      return 'Congratulations! You won!';
-    }
-  }
-
-  if (userChoice === 'scissors') {
-    if (computerChoice === 'rock') {
-      return 'Sorry, computer won!';
-    } else {
-      return 'Congratulations, You won!'
-    }
-  }
-};
+}
 
 function game() {
   let scores = [5];
-  let computerScore = 0;
-  let userScore = 0;
+  let computerScore=0;
+  let userScore=0;
   let userChoice;
   let computerChoice;
 
@@ -63,20 +70,24 @@ function game() {
     scores[index] = determineWinner(userChoice, computerChoice)
   }
   for (let index = 0; index < scores.length; index++) {
-    if (scores[index] === computerChoice) {
-      return 'The computer won';
+    if (scores[index] == 2) {
+      computerScore++;
     }
-    else if (scores[index] === userChoice) {
-      return 'You won';
-    }
-    else{
-      return 'This is a tie'
+    else if (scores[index] == 1) {
+      userScore++;
     }
   }
+  if(computerScore>userScore){
+    return "Sorry! The computer won!";
+}
+else if(userScore>computerScore){
+    return "Congratulations! You won!";
+}
+else{
+    return "It is a tie.";
+}
 }
 console.log(game());
-
-
 
 
 

@@ -63,20 +63,14 @@ function game() {
     scores[index] = determineWinner(userChoice, computerChoice)
   }
   for (let index = 0; index < scores.length; index++) {
-    if (scores[index] == 2) {
-      computerScore++;
+    if (scores[index] === computerChoice) {
+      return 'The computer won';
     }
-    else if (scores[index] == 1) {
-      userScore++;
+    else if (scores[index] === userChoice) {
+      return 'You won';
     }
-  }
-  if (computerScore > userScore) {
-    return "The computer won";
-  else if (userScore > computerScore) {
-      return "You won!";
-    }
-    else {
-      return "It is a tie.";
+    else{
+      return 'This is a tie'
     }
   }
 }

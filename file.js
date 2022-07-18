@@ -62,7 +62,7 @@ function game() {
     computerChoice = computerPlay();
     scores[index] = determineWinner(userChoice, computerChoice)
   }
-  for (let index = 0; index < scores.length ; index++) {
+  for (let index = 0; index < scores.length; index++) {
     if (scores[index] == 2) {
       computerScore++;
     }
@@ -72,7 +72,7 @@ function game() {
   }
   if (computerScore > userScore) {
     return "The computer won";
-   if (userScore > computerScore) {
+  else if (userScore > computerScore) {
       return "You won!";
     }
     else {

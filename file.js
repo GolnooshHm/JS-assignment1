@@ -83,7 +83,9 @@ function game() {
 else if(userScore>computerScore){
     return "Congratulations! You won!";
 }
-
+else{
+  return 'It is a tie!';
+}
 }
 console.log(game());
 

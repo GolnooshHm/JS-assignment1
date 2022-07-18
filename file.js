@@ -26,33 +26,33 @@ function determineWinner (userChoice, computerChoice) {
   switch(userChoice) {
       case "rock":
           if (computerChoice == "paper"){
-              return 2;
+              console.log('The computer won!');
           }
           else if (computerChoice == "scissors"){
-              return 1;
+             console.log('You won!');
           }
           else {
-              return 0;
+             console.log('This is a tie!');
           }
       case "paper":
           if (computerChoice == "scissors"){
-              return 2;
+              console.log('Sorry! The computer won!');
           }
           else if (computerChoice == "rock"){
-              return 1;
+             console.log('You won!');
           }
           else {
-              return 0;
+              console.log('This is a tie!');
           }
       case "scissors":
           if (computerChoice == "rock"){
-              return 2;
+              console.log('The computer won!');
           }
           else if (computerChoice == "paper"){
-              return 1;
+              console.log('You won!');
           }
           else {
-              return 0;
+              console.log('This is a tie!');
           }
     }
 }
@@ -65,28 +65,22 @@ function game() {
   let computerChoice;
 
   for (let index = 0; index < 5; index++) {
-    userChoice = prompt(`Round(${index + 1}) Choose rock, paper or scissors:`);
+    userChoice =window.prompt(`Round(${index + 1}) Choose rock, paper or scissors:`);
     computerChoice = computerPlay();
-    scores[index] = determineWinner(userChoice, computerChoice)
+    console.log( determineWinner(userChoice, computerChoice));
   }
-  for (let index = 0; index < scores.length; index++) {
-    if (scores[index] == 2) {
-      computerScore++;
-    }
-    else if (scores[index] == 1) {
-      userScore++;
-    }
+ 
   }
-  if(computerScore>userScore){
-    return "Sorry! The computer won!";
+  if(computerScore>userScore) {
+    console.log ("Sorry! The computer won!");
 }
 else if(userScore>computerScore){
-    return "Congratulations! You won!";
+   console.log ("Congratulations! You won!");
 }
 else{
-  return 'It is a tie!';
+  console.log ('It is a tie!');
 }
-}
+
 console.log(game());
 
 

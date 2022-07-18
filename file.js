@@ -22,63 +22,71 @@ const userPlay = userInput => {
   }
 };
 
-function determineWinner (userChoice, computerChoice) {
-  switch(userChoice) {
-      case "rock":
-          if (computerChoice == "paper"){
-              console.log('The computer won!');
-          }
-          else if (computerChoice == "scissors"){
-             console.log('You won!');
-          }
-          else {
-             console.log('This is a tie!');
-          }
-      case "paper":
-          if (computerChoice == "scissors"){
-              console.log('Sorry! The computer won!');
-          }
-          else if (computerChoice == "rock"){
-             console.log('You won!');
-          }
-          else {
-              console.log('This is a tie!');
-          }
-      case "scissors":
-          if (computerChoice == "rock"){
-              console.log('The computer won!');
-          }
-          else if (computerChoice == "paper"){
-              console.log('You won!');
-          }
-          else {
-              console.log('This is a tie!');
-          }
-    }
+function determineWinner(userChoice, computerChoice) {
+  switch (userChoice) {
+    case "rock":
+      if (computerChoice == "paper") {
+        return 2;
+      }
+      else if (computerChoice == "scissors") {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    case "paper":
+      if (computerChoice == "scissors") {
+        return 2;
+      }
+      else if (computerChoice == "rock") {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+    case "scissors":
+      if (computerChoice == "rock") {
+        return 2;
+      }
+      else if (computerChoice == "paper") {
+        return 1;
+      }
+      else {
+        return 0;
+      }
+  }
 }
 
 function game() {
   let scores = [5];
-  let computerScore=0;
-  let userScore=0;
-  let userChoice;
+  let computerScore = 0;
+  let userScore = 0;
+  let userPlay;
   let computerChoice;
 
   for (let index = 0; index < 5; index++) {
-    userChoice =window.prompt(`Round(${index + 1}) Choose rock, paper or scissors:`);
+
+    userChoice = prompt(`Round(${index + 1}) Choose rock, paper or scissors!`);
     computerChoice = computerPlay();
-    console.log( determineWinner(userChoice, computerChoice));
+    scores[index] = determineWinner(userPlay, computerChoice)
   }
- 
+  for (let index = 0; index < scores.length; index++) {
+    if (scores[index] == 2) {
+      computerScore++;
+    }
+    else if (scores[index] == 1) {
+      userScore++;
+    }
   }
-  if(computerScore>userScore) {
-    console.log ("Sorry! The computer won!");
-}
-else if(userScore>computerScore){
-   console.log ("Congratulations! You won!");
-}
-else{
-  console.log ('It is a tie!');
+  if (computerScore > userScore) {
+    return "Sorry!The computer won!";
+  }
+  else if (userScore > computerScore) {
+    return "Great!You won!";
+  }
+  else {
+    return "It is a tie!";
+  }
 }
 
 console.log(game());

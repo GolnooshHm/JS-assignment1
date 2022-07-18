@@ -16,7 +16,7 @@ const computerPlay = () => {
 const userPlay = userInput => {
   userInput = userInput.toLowerCase();
   if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-    return userInput;
+    console.log (userInput);
   } else {
     console.log('Error, please type "rock", "paper" or "scissors" ')
   }
@@ -66,7 +66,7 @@ function game() {
 
   for (let index = 0; index < 5; index++) {
 
-    userChoice = prompt(`Round(${index + 1}) Choose rock, paper or scissors!`);
+    userPlay = prompt(`Round(${index + 1}) Choose rock, paper or scissors!`);
     computerChoice = computerPlay();
     scores[index] = determineWinner(userPlay, computerChoice)
   }
@@ -79,13 +79,13 @@ function game() {
     }
   }
   if (computerScore > userScore) {
-    return "Sorry!The computer won!";
+    console.log ("Sorry!The computer won!");
   }
   else if (userScore > computerScore) {
-    return "Great!You won!";
+    console.log ("Great!You won!");
   }
   else {
-    return "It is a tie!";
+    console.log ("It is a tie!");
   }
 }
 
